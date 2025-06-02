@@ -20,6 +20,18 @@ server
     console.log(
       chalk.green(`✓ MCP runner server running on ${protocol}://${host}:${port}`),
     );
+    
+    // Add information about the external URL if available (for cloud platforms like Render)
+    if (process.env.RENDER_EXTERNAL_URL) {
+      console.log(
+        chalk.green(`✓ External URL: ${process.env.RENDER_EXTERNAL_URL}`),
+      );
+    } else {
+      console.log(
+        chalk.green(`✓ External URL: ${protocol}://localhost:${port} (for local access)`),
+      );
+    }
+    
     console.log(
       chalk.yellow(
         'Note: You must keep the server running in the background in order to use MCP in TypingMind.',
@@ -30,4 +42,3 @@ server
     console.error(chalk.red(`Error starting MCP server: ${err.message}`));
     process.exit(1);
   });
-  
