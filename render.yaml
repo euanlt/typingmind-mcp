@@ -1,0 +1,16 @@
+services:
+  # Web service configuration
+  - type: web
+    name: typingmind-mcp
+    env: node
+    buildCommand: npm install
+    startCommand: node bin/index.js $MCP_AUTH_TOKEN
+    healthCheckPath: /public-health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MCP_AUTH_TOKEN
+        sync: false # This will prompt for the value during deployment
+      - key: RENDER
+        value: true
+    autoDeploy: true
