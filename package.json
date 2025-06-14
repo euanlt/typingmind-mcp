@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node bin/index.js",
-    "test-port": "node test-port.js"
+    "test-port": "node test-port.js",
+    "postinstall": "node patch-mcp-timeout.js"
   },
   "keywords": [
     "ai",
